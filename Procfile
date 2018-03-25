@@ -1,1 +1,1 @@
-web: gunicorn yasya_bot:yasya_bot
+web: python yasya_bot.py
