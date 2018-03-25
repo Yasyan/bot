@@ -12,7 +12,7 @@ class BotHandler:
 		self.token = token 
 		self.api_url = "https://api.telegram.org/bot{}/".format(token) 
 
-	def get_updates(self, offset=None, timeout=5): 
+	def get_updates(self, offset=None, timeout=100): 
 		method = 'getUpdates' 
 		params = {'timeout': timeout, 'offset': offset} 
 		resp = requests.get(self.api_url + method, params) 
@@ -71,7 +71,7 @@ def main():
 			greet_bot.send_message(last_chat_id, 'Добрый вечер, {}'.format(last_chat_name)) 
 			## today += 1 
 
-		new_offset = last_update_id + 1 
+		new_offset = last_update_id + 60 
 
 if __name__ == '__main__': 
 	try: 
