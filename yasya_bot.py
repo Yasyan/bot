@@ -3,7 +3,6 @@ url = "https://api.telegram.org/bot491070234:AAH5IhBzakMoXazjvVkHXRV1eiGgOiNwlXc
 
 import requests 
 import datetime 
-import time
 
 import sys
 print(sys.version)
@@ -13,11 +12,10 @@ class BotHandler:
 		self.token = token 
 		self.api_url = "https://api.telegram.org/bot{}/".format(token) 
 
-	def get_updates(self, offset=None, timeout=5): 
-		method = 'getUpdates' 
+	def get_updates(self, offset=None, timeout=1000): 
+		method = 'getUpdates'
 		params = {'timeout': timeout, 'offset': offset} 
 		resp = requests.get(self.api_url + method, params) 
-		time.sleep(60)
 		result_json = resp.json()['result'] 
 		return result_json 
 
@@ -25,7 +23,6 @@ class BotHandler:
 		params = {'chat_id': chat_id, 'text': text} 
 		method = 'sendMessage' 
 		resp = requests.post(self.api_url + method, params) 
-		time.sleep(60)
 		return resp 
 
 	def get_last_update(self): 
