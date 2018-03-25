@@ -1,1 +1,1 @@
-ECHO is on.
+web: gunicorn yasya_bot:yasya_bot
