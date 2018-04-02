@@ -1,1 +1,1 @@
-web: python yasya_bot.py
+web: python yasya_bot.py -p $PORT
