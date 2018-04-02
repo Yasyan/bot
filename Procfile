@@ -1,1 +1,1 @@
-worker: python yasya_bot.py -p $PORT
+web: python yasya_bot.py
