@@ -77,9 +77,9 @@ def body():
 		new_offset = last_update_id + 1 
 
 if __name__ == '__main__': 
-	port = int(os.environ.get("PORT", 5000))
-	app.run(host='0.0.0.0', port=port)
 	try: 
 		body() 
 	except KeyboardInterrupt: 
 		exit()
+	port = int(os.environ.get("PORT", 5000))
+	app.run(host='0.0.0.0', port=port)
