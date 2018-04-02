@@ -1,11 +1,11 @@
 url = "https://api.telegram.org/bot491070234:AAH5IhBzakMoXazjvVkHXRV1eiGgOiNwlXc/"
-app = Flask(__name__)
 import os
 import requests 
 import datetime 
-
 import sys
 from flask import Flask
+app = Flask(__name__)
+
 print(sys.version)
 
 class BotHandler: 
@@ -42,7 +42,9 @@ greet_bot = BotHandler(token)
 greetings = ('здравствуй', 'привет', 'ку', 'здорово') 
 now = datetime.datetime.now() 
 
-def main(): 
+@app.route("/")
+
+def body(): 
 	new_offset = None 
 	today = now.day 
 	hour = now.hour 
@@ -74,11 +76,9 @@ def main():
 
 		new_offset = last_update_id + 1 
 
-@app.route("/")
-
 if __name__ == '__main__': 
 	port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+	app.run(host='0.0.0.0', port=port)
 	try: 
 		main() 
 	except KeyboardInterrupt: 
